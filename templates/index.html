@@ -3,13 +3,103 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Daniel Oren | DevOps & Cloud </title>
+<title>Daniel Oren | DevOps & Cloud</title>
 <meta name="description" content="Daniel Oren – DevOps, System & Cloud Administrator at Israel Electric Corporation. Azure and AWS specialist, hybrid cloud, and AI/ML integration.">
 <script>try{document.documentElement.dataset.theme=localStorage.getItem('theme')||'dark'}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<style>
+  /* Course Grid Layout - Matches Lihi's Site Exactly */
+  .courses-section-subtitle {
+    text-align: center;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #e2e8f0;
+    margin-bottom: 28px;
+    letter-spacing: 0.3px;
+  }
+  .courses-grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin-bottom: 45px;
+  }
+  @media (max-width: 1200px) {
+    .courses-grid-container {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  @media (max-width: 820px) {
+    .courses-grid-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 520px) {
+    .courses-grid-container {
+      grid-template-columns: 1fr;
+    }
+  }
+  .c-box {
+    background: rgba(13, 14, 27, 0.75);
+    border: 1px solid rgba(168, 85, 247, 0.28);
+    border-radius: 14px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 12px rgba(168, 85, 247, 0.05);
+    backdrop-filter: blur(6px);
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box;
+    min-height: 140px;
+  }
+  .c-box:hover {
+    transform: translateY(-3px);
+    border-color: rgba(236, 72, 153, 0.55);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4), 0 0 16px rgba(236, 72, 153, 0.15);
+  }
+  .c-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  .c-pill {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #94a3b8;
+  }
+  .c-grade {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #ffffff;
+  }
+  .c-name {
+    font-family: 'Sora', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 6px 0;
+    line-height: 1.35;
+  }
+  .c-info {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    color: #94a3b8;
+    line-height: 1.45;
+    margin: 0;
+  }
+</style>
 </head>
 <body>
 <canvas id="particles" aria-hidden="true"></canvas>
@@ -61,110 +151,108 @@
   <p class="term">$ az problems list --status open<br>[ ] <span>// nothing a little debugging can't solve</span></p>
 
   <h2 class="title edu">Education</h2>
+  <div class="courses-section-subtitle">Completed Management &amp; Data Science Degree Courses</div>
+
+  <!-- Course Boxes Grid (Exactly like Lihi's layout) -->
+  <div class="courses-grid-container">
+    <div class="c-box">
+      <div class="c-top">
+        <span class="c-pill">Course</span>
+        <span class="c-grade">100</span>
+      </div>
+      <div class="c-name">Intro to Programming with Python</div>
+      <p class="c-info">Foundations of programming, data structures, algorithms, and automated scripting.</p>
+    </div>
+
+    <div class="c-box">
+      <div class="c-top">
+        <span class="c-pill">Course</span>
+        <span class="c-grade">100</span>
+      </div>
+      <div class="c-name">Intro to Programming in R</div>
+      <p class="c-info">Statistical computing, data manipulation, vectorization, and data visualization.</p>
+    </div>
+
+    <div class="c-box">
+      <div class="c-top">
+        <span class="c-pill">Course</span>
+        <span class="c-grade">100</span>
+      </div>
+      <div class="c-name">Intro to Econometrics with R</div>
+      <p class="c-info">Empirical modeling, linear regression analysis, and hypothesis testing with R.</p>
+    </div>
+
+    <div class="c-box">
+      <div class="c-top">
+        <span class="c-pill">Course</span>
+        <span class="c-grade">100</span>
+      </div>
+      <div class="c-name">AI Applications in Management</div>
+      <p class="c-info">Implementing AI solutions, automated decision support, and intelligent workflows.</p>
+    </div>
+
+    <div class="c-box">
+      <div class="c-top">
+        <span class="c-pill">Course</span>
+        <span class="c-grade">100</span>
+      </div>
+      <div class="c-name">Business Computing Applications</div>
+      <p class="c-info">Enterprise software tools, workflow automation, and organizational systems.</p>
+    </div>
+
+    <div class="c-box">
+      <div class="c-top">
+        <span class="c-pill">Course</span>
+        <span class="c-grade">96</span>
+      </div>
+      <div class="c-name">Machine Learning with Python &amp; AI</div>
+      <p class="c-info">Supervised and unsupervised models, predictive analytics, and model evaluation.</p>
+    </div>
+
+    <div class="c-box">
+      <div class="c-top">
+        <span class="c-pill">Course</span>
+        <span class="c-grade">96</span>
+      </div>
+      <div class="c-name">Statistics &amp; Data Analysis A</div>
+      <p class="c-info">Probability theory, distributions, random variables, and statistical inference.</p>
+    </div>
+
+    <div class="c-box">
+      <div class="c-top">
+        <span class="c-pill">Course</span>
+        <span class="c-grade">95</span>
+      </div>
+      <div class="c-name">Advanced Econometrics with R</div>
+      <p class="c-info">Multivariate regressions, time series models, diagnostic testing, and forecasting.</p>
+    </div>
+  </div>
+
+  <!-- Degrees / Training Cards -->
   <div class="cards">
     <article class="card">
       <h3>B.A. Management – Data Science &amp; AI</h3>
       <p class="meta">Western Galilee College · 3rd year (in progress)</p>
       <p class="score"><b>96.5</b> weighted GPA <span>·</span> <b>98</b> specialization average</p>
-      <p class="meta sub">Completed Management &amp; Data Science Courses</p>
-
-      <!-- Grid of Courses styled exactly like the screenshot -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; margin: 20px 0;">
-        
-        <!-- Box 1 -->
-        <div style="background: #080914; border: 1px solid rgba(220, 70, 140, 0.35); box-shadow: 0 0 14px rgba(220, 70, 140, 0.08); border-radius: 14px; padding: 14px 14px 16px; display: flex; flex-direction: column; justify-content: flex-start; min-height: 140px; box-sizing: border-box;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-            <span style="font-size: 0.62rem; font-family: 'JetBrains Mono', monospace; font-weight: 600; letter-spacing: 0.8px; color: #b4b8d0; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 999px; padding: 2px 7px; text-transform: uppercase;">COURSE</span>
-            <span style="font-size: 0.95rem; font-weight: 800; color: #ffffff; font-family: 'JetBrains Mono', monospace;">100</span>
-          </div>
-          <div style="font-weight: 700; font-size: 0.86rem; color: #ffffff; margin-bottom: 6px; line-height: 1.3;">Intro to Programming with Python</div>
-          <p style="font-size: 0.72rem; color: #949ab5; margin: 0; line-height: 1.4;">Foundations of programming, data structures, algorithms, and automated scripting.</p>
-        </div>
-
-        <!-- Box 2 -->
-        <div style="background: #080914; border: 1px solid rgba(220, 70, 140, 0.35); box-shadow: 0 0 14px rgba(220, 70, 140, 0.08); border-radius: 14px; padding: 14px 14px 16px; display: flex; flex-direction: column; justify-content: flex-start; min-height: 140px; box-sizing: border-box;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-            <span style="font-size: 0.62rem; font-family: 'JetBrains Mono', monospace; font-weight: 600; letter-spacing: 0.8px; color: #b4b8d0; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 999px; padding: 2px 7px; text-transform: uppercase;">COURSE</span>
-            <span style="font-size: 0.95rem; font-weight: 800; color: #ffffff; font-family: 'JetBrains Mono', monospace;">100</span>
-          </div>
-          <div style="font-weight: 700; font-size: 0.86rem; color: #ffffff; margin-bottom: 6px; line-height: 1.3;">Intro to Programming in R</div>
-          <p style="font-size: 0.72rem; color: #949ab5; margin: 0; line-height: 1.4;">Data manipulation, statistical computing, vectorization, and visualization libraries.</p>
-        </div>
-
-        <!-- Box 3 -->
-        <div style="background: #080914; border: 1px solid rgba(220, 70, 140, 0.35); box-shadow: 0 0 14px rgba(220, 70, 140, 0.08); border-radius: 14px; padding: 14px 14px 16px; display: flex; flex-direction: column; justify-content: flex-start; min-height: 140px; box-sizing: border-box;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-            <span style="font-size: 0.62rem; font-family: 'JetBrains Mono', monospace; font-weight: 600; letter-spacing: 0.8px; color: #b4b8d0; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 999px; padding: 2px 7px; text-transform: uppercase;">COURSE</span>
-            <span style="font-size: 0.95rem; font-weight: 800; color: #ffffff; font-family: 'JetBrains Mono', monospace;">100</span>
-          </div>
-          <div style="font-weight: 700; font-size: 0.86rem; color: #ffffff; margin-bottom: 6px; line-height: 1.3;">Intro to Econometrics with R</div>
-          <p style="font-size: 0.72rem; color: #949ab5; margin: 0; line-height: 1.4;">Empirical economic modeling, linear regression analysis, and hypothesis testing.</p>
-        </div>
-
-        <!-- Box 4 -->
-        <div style="background: #080914; border: 1px solid rgba(220, 70, 140, 0.35); box-shadow: 0 0 14px rgba(220, 70, 140, 0.08); border-radius: 14px; padding: 14px 14px 16px; display: flex; flex-direction: column; justify-content: flex-start; min-height: 140px; box-sizing: border-box;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-            <span style="font-size: 0.62rem; font-family: 'JetBrains Mono', monospace; font-weight: 600; letter-spacing: 0.8px; color: #b4b8d0; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 999px; padding: 2px 7px; text-transform: uppercase;">COURSE</span>
-            <span style="font-size: 0.95rem; font-weight: 800; color: #ffffff; font-family: 'JetBrains Mono', monospace;">100</span>
-          </div>
-          <div style="font-weight: 700; font-size: 0.86rem; color: #ffffff; margin-bottom: 6px; line-height: 1.3;">AI Applications in Management</div>
-          <p style="font-size: 0.72rem; color: #949ab5; margin: 0; line-height: 1.4;">AI implementation, automated decision support, and intelligent workflows.</p>
-        </div>
-
-        <!-- Box 5 -->
-        <div style="background: #080914; border: 1px solid rgba(220, 70, 140, 0.35); box-shadow: 0 0 14px rgba(220, 70, 140, 0.08); border-radius: 14px; padding: 14px 14px 16px; display: flex; flex-direction: column; justify-content: flex-start; min-height: 140px; box-sizing: border-box;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-            <span style="font-size: 0.62rem; font-family: 'JetBrains Mono', monospace; font-weight: 600; letter-spacing: 0.8px; color: #b4b8d0; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 999px; padding: 2px 7px; text-transform: uppercase;">COURSE</span>
-            <span style="font-size: 0.95rem; font-weight: 800; color: #ffffff; font-family: 'JetBrains Mono', monospace;">100</span>
-          </div>
-          <div style="font-weight: 700; font-size: 0.86rem; color: #ffffff; margin-bottom: 6px; line-height: 1.3;">Business Computing Applications</div>
-          <p style="font-size: 0.72rem; color: #949ab5; margin: 0; line-height: 1.4;">Enterprise computing, process design, and data-driven business utilities.</p>
-        </div>
-
-        <!-- Box 6 -->
-        <div style="background: #080914; border: 1px solid rgba(220, 70, 140, 0.35); box-shadow: 0 0 14px rgba(220, 70, 140, 0.08); border-radius: 14px; padding: 14px 14px 16px; display: flex; flex-direction: column; justify-content: flex-start; min-height: 140px; box-sizing: border-box;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-            <span style="font-size: 0.62rem; font-family: 'JetBrains Mono', monospace; font-weight: 600; letter-spacing: 0.8px; color: #b4b8d0; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 999px; padding: 2px 7px; text-transform: uppercase;">COURSE</span>
-            <span style="font-size: 0.95rem; font-weight: 800; color: #ffffff; font-family: 'JetBrains Mono', monospace;">96</span>
-          </div>
-          <div style="font-weight: 700; font-size: 0.86rem; color: #ffffff; margin-bottom: 6px; line-height: 1.3;">Machine Learning with Python &amp; AI</div>
-          <p style="font-size: 0.72rem; color: #949ab5; margin: 0; line-height: 1.4;">Supervised/unsupervised algorithms, evaluation metrics, and feature engineering.</p>
-        </div>
-
-        <!-- Box 7 -->
-        <div style="background: #080914; border: 1px solid rgba(220, 70, 140, 0.35); box-shadow: 0 0 14px rgba(220, 70, 140, 0.08); border-radius: 14px; padding: 14px 14px 16px; display: flex; flex-direction: column; justify-content: space-between; min-height: 140px; box-sizing: border-box;">
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-              <span style="font-size: 0.62rem; font-family: 'JetBrains Mono', monospace; font-weight: 600; letter-spacing: 0.8px; color: #b4b8d0; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 999px; padding: 2px 7px; text-transform: uppercase;">COURSE</span>
-              <span style="font-size: 0.95rem; font-weight: 800; color: #ffffff; font-family: 'JetBrains Mono', monospace;">96</span>
-            </div>
-            <div style="font-weight: 700; font-size: 0.86rem; color: #ffffff; margin-bottom: 6px; line-height: 1.3;">Statistics &amp; Data Analysis A</div>
-            <p style="font-size: 0.72rem; color: #949ab5; margin: 0; line-height: 1.4;">Probability models, random variables, sample estimators, and inferences.</p>
-          </div>
-        </div>
-
-        <!-- Box 8 -->
-        <div style="background: #080914; border: 1px solid rgba(220, 70, 140, 0.35); box-shadow: 0 0 14px rgba(220, 70, 140, 0.08); border-radius: 14px; padding: 14px 14px 16px; display: flex; flex-direction: column; justify-content: space-between; min-height: 140px; box-sizing: border-box;">
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-              <span style="font-size: 0.62rem; font-family: 'JetBrains Mono', monospace; font-weight: 600; letter-spacing: 0.8px; color: #b4b8d0; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 999px; padding: 2px 7px; text-transform: uppercase;">COURSE</span>
-              <span style="font-size: 0.95rem; font-weight: 800; color: #ffffff; font-family: 'JetBrains Mono', monospace;">95</span>
-            </div>
-            <div style="font-weight: 700; font-size: 0.86rem; color: #ffffff; margin-bottom: 6px; line-height: 1.3;">Advanced Econometrics with R</div>
-            <p style="font-size: 0.72rem; color: #949ab5; margin: 0; line-height: 1.4;">Multivariate analysis, time series modeling, forecasting, and regression testing.</p>
-          </div>
-        </div>
-
-      </div>
-
       <p class="meta sub">Currently studying</p>
-      <ul class="chips small"><li>Neural Networks with Python</li><li>Advanced ML &amp; AI Applications</li><li>SQL</li><li>Computational Models in Economics (R)</li></ul>
+      <ul class="chips small">
+        <li>Neural Networks with Python</li>
+        <li>Advanced ML &amp; AI Applications</li>
+        <li>SQL</li>
+        <li>Computational Models in Economics (R)</li>
+      </ul>
     </article>
     <article class="card">
       <h3>Infrastructure, Networking &amp; Cloud Management</h3>
       <p class="meta">HackerU College · 2021 – 2022 · Graduated with honors (570 Academic Hours)</p>
-      <p>Hands-on training in system administration, communication networks and Microsoft Azure. This is the base for my work in cloud and infrastructure today.</p>
-      <ul class="chips small"><li>Systems</li><li>Networking</li><li>Microsoft Azure</li><li>Infrastructure</li><li>570 Hours</li></ul>
+      <p>Practical training in system administration, communication networks and Microsoft Azure. This is the base for my work in cloud and infrastructure today.</p>
+      <ul class="chips small">
+        <li>Systems</li>
+        <li>Networking</li>
+        <li>Microsoft Azure</li>
+        <li>Infrastructure</li>
+        <li>570 Hours</li>
+      </ul>
     </article>
   </div>
 </section>
