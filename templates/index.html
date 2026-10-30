@@ -15,200 +15,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-<style>
-  /* ====== Typewriter Effect ====== */
-  .typewriter-cursor {
-    display: inline-block;
-    width: 3px;
-    height: 1.05em;
-    background: #ec4899;
-    margin-left: 4px;
-    vertical-align: -0.1em;
-    animation: blinkCursor 0.75s infinite;
-  }
-  @keyframes blinkCursor {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-  }
-
-  /* ====== Scroll & Element Fade In System ====== */
-  .fade-item {
-    opacity: 0;
-    transform: translateY(32px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: opacity, transform;
-  }
-  .fade-item.show {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ====== Education & Course Cards Layout ====== */
-  .courses-title-sub {
-    text-align: center;
-    font-size: 1.15rem;
-    font-weight: 600;
-    color: #e2e8f0;
-    margin-bottom: 35px;
-    letter-spacing: 0.3px;
-  }
-  .courses-grid-wide {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    margin-bottom: 50px;
-  }
-  @media (max-width: 1100px) {
-    .courses-grid-wide {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  @media (max-width: 650px) {
-    .courses-grid-wide {
-      grid-template-columns: 1fr;
-    }
-  }
-  .c-card-box {
-    background: rgba(14, 15, 30, 0.82);
-    border: 1px solid rgba(168, 85, 247, 0.32);
-    border-radius: 16px;
-    padding: 22px 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4), 0 0 15px rgba(168, 85, 247, 0.08);
-    backdrop-filter: blur(8px);
-    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-    box-sizing: border-box;
-    min-height: 160px;
-  }
-  .c-card-box:hover {
-    transform: translateY(-5px);
-    border-color: rgba(236, 72, 153, 0.65);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(236, 72, 153, 0.2);
-  }
-  .c-card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 14px;
-  }
-  .c-card-tag {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.65rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 3px 10px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #cbd5e1;
-  }
-  .c-card-score {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 1.05rem;
-    font-weight: 800;
-    color: #ffffff;
-  }
-  .c-card-title {
-    font-family: 'Sora', sans-serif;
-    font-size: 0.98rem;
-    font-weight: 700;
-    color: #ffffff;
-    margin: 0 0 8px 0;
-    line-height: 1.35;
-  }
-  .c-card-desc {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.78rem;
-    color: #94a3b8;
-    line-height: 1.5;
-    margin: 0;
-  }
-
-  /* ====== Centered Contact Me Section ====== */
-  #contact {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 80px 20px;
-  }
-  #contact .title {
-    text-align: center;
-    margin-bottom: 8px;
-  }
-  #contact .lead {
-    text-align: center;
-    color: #94a3b8;
-    font-size: 0.95rem;
-    margin-bottom: 30px;
-  }
-  .contact-box-wrapper {
-    width: 100%;
-    max-width: 580px;
-    background: rgba(13, 14, 27, 0.75);
-    border: 1px solid rgba(168, 85, 247, 0.3);
-    border-radius: 20px;
-    padding: 36px 32px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), 0 0 20px rgba(168, 85, 247, 0.08);
-    backdrop-filter: blur(10px);
-    box-sizing: border-box;
-  }
-  .contact-box-wrapper form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    text-align: left;
-  }
-  .contact-field-group {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .contact-field-group label {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #e2e8f0;
-  }
-  .contact-box-wrapper input,
-  .contact-box-wrapper textarea {
-    width: 100%;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 10px;
-    padding: 12px 14px;
-    color: #ffffff;
-    font-family: inherit;
-    font-size: 0.9rem;
-    outline: none;
-    box-sizing: border-box;
-    transition: border-color 0.2s ease;
-  }
-  .contact-box-wrapper input:focus,
-  .contact-box-wrapper textarea:focus {
-    border-color: rgba(236, 72, 153, 0.8);
-  }
-  .contact-btn-center {
-    align-self: center;
-    background: linear-gradient(135deg, #a855f7, #ec4899);
-    color: #ffffff;
-    font-weight: 700;
-    padding: 12px 36px;
-    border: none;
-    border-radius: 999px;
-    cursor: pointer;
-    font-size: 0.95rem;
-    margin-top: 8px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  .contact-btn-center:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 18px rgba(236, 72, 153, 0.45);
-  }
-</style>
 </head>
 <body>
 <canvas id="particles" aria-hidden="true"></canvas>
@@ -230,8 +36,8 @@
 
 <main>
 <section id="home" class="hero">
-  <div class="hero-text fade-item">
-    <h1>Hi, I'm <span id="typewriter"></span><span class="typewriter-cursor" id="typewriter-cursor"></span></h1>
+  <div class="hero-text fade-in-left">
+    <h1>Hi, I'm <span id="typewriter"></span><span class="typewriter-caret" id="typewriter-caret"></span></h1>
     <h2>DevOps · System &amp; Cloud Engineer</h2>
     <p>I'm a DevOps, System and Cloud Administrator at <em class="hl">Israel Electric Corporation</em> with about 4 years of hands-on experience, and a third-year Management student specializing in Data Science and AI (GPA 96.5).</p>
     <p>I specialize in <em class="hl">Azure and AWS</em>, leading complex cloud, integration and hybrid-environment projects. I also bring <em class="hl">AI and machine learning</em> into the organization to automate work, improve reliability and cut manual effort.</p>
@@ -242,13 +48,13 @@
       <a class="btn primary" href="#contact">Contact Me</a>
     </div>
   </div>
-  <div class="photo fade-item"><img src="{{ url_for('static', filename='images/daniel.jpg') }}" alt="Daniel Oren"></div>
+  <div class="photo fade-in-right"><img src="{{ url_for('static', filename='images/daniel.jpg') }}" alt="Daniel Oren"></div>
 </section>
 
 <section id="about">
-  <h2 class="title fade-item">Skills</h2>
-  <p class="lead fade-item">Cloudy problems, clear skies. I keep debugging until everything is green.</p>
-  <ul class="clouds fade-item">
+  <h2 class="title fade-in-on-scroll">Skills</h2>
+  <p class="lead fade-in-on-scroll">Cloudy problems, clear skies. I keep debugging until everything is green.</p>
+  <ul class="clouds fade-in-on-scroll">
     <li class="c1"><span>Microsoft Azure</span></li><li class="c1"><span>AWS</span></li><li class="c1"><span>Hybrid Cloud</span></li>
     <li class="c1"><span>Cloud Integration</span></li><li class="c1"><span>Infrastructure Management</span></li><li class="c1"><span>System Administration</span></li><li class="c1"><span>Networking</span></li>
     <li class="c2"><span>Python</span></li><li class="c2"><span>PowerShell</span></li><li class="c2"><span>Java</span></li>
@@ -256,89 +62,89 @@
     <li class="c3"><span>Problem Solving</span></li><li class="c3"><span>Analytical Thinking</span></li><li class="c3"><span>Project Leadership</span></li>
     <li class="c3"><span>Teamwork</span></li><li class="c3"><span>Rapid Learning</span></li><li class="c3"><span>Multi-tasking</span></li><li class="c3"><span>Work Under Pressure</span></li>
   </ul>
-  <p class="term fade-item">$ az problems list --status open<br>[ ] <span>// nothing a little debugging can't solve</span></p>
+  <p class="term fade-in-on-scroll">$ az problems list --status open<br>[ ] <span>// nothing a little debugging can't solve</span></p>
 
-  <h2 class="title edu fade-item">Education</h2>
-  <div class="courses-title-sub fade-item">Completed Management &amp; Data Science Degree Courses</div>
+  <h2 class="title edu fade-in-on-scroll">Education</h2>
+  <div class="computer-science-courses fade-in-on-scroll">Completed Management &amp; Data Science Degree Courses</div>
 
-  <!-- Course Boxes Grid -->
+  <!-- Course Cards Grid -->
   <div class="courses-grid-wide">
-    <div class="c-card-box fade-item">
-      <div class="c-card-header">
-        <span class="c-card-tag">Course</span>
-        <span class="c-card-score">100</span>
+    <div class="edu-card fade-in-on-scroll">
+      <div class="edu-header">
+        <span class="edu-badge">Course</span>
+        <span class="edu-grade">100</span>
       </div>
-      <div class="c-card-title">Intro to Programming with Python</div>
-      <p class="c-card-desc">Foundations of programming, data structures, algorithms, and automated scripting.</p>
+      <h3>Intro to Programming with Python</h3>
+      <p>Foundations of programming, data structures, algorithms, and automated scripting.</p>
     </div>
 
-    <div class="c-card-box fade-item">
-      <div class="c-card-header">
-        <span class="c-card-tag">Course</span>
-        <span class="c-card-score">100</span>
+    <div class="edu-card fade-in-on-scroll">
+      <div class="edu-header">
+        <span class="edu-badge">Course</span>
+        <span class="edu-grade">100</span>
       </div>
-      <div class="c-card-title">Intro to Programming in R</div>
-      <p class="c-card-desc">Statistical computing, data manipulation, vectorization, and data visualization.</p>
+      <h3>Intro to Programming in R</h3>
+      <p>Statistical computing, data manipulation, vectorization, and data visualization.</p>
     </div>
 
-    <div class="c-card-box fade-item">
-      <div class="c-card-header">
-        <span class="c-card-tag">Course</span>
-        <span class="c-card-score">100</span>
+    <div class="edu-card fade-in-on-scroll">
+      <div class="edu-header">
+        <span class="edu-badge">Course</span>
+        <span class="edu-grade">100</span>
       </div>
-      <div class="c-card-title">Intro to Econometrics with R</div>
-      <p class="c-card-desc">Empirical modeling, linear regression analysis, and hypothesis testing with R.</p>
+      <h3>Intro to Econometrics with R</h3>
+      <p>Empirical modeling, linear regression analysis, and hypothesis testing with R.</p>
     </div>
 
-    <div class="c-card-box fade-item">
-      <div class="c-card-header">
-        <span class="c-card-tag">Course</span>
-        <span class="c-card-score">100</span>
+    <div class="edu-card fade-in-on-scroll">
+      <div class="edu-header">
+        <span class="edu-badge">Course</span>
+        <span class="edu-grade">100</span>
       </div>
-      <div class="c-card-title">AI Applications in Management</div>
-      <p class="c-card-desc">Implementing AI solutions, automated decision support, and intelligent workflows.</p>
+      <h3>AI Applications in Management</h3>
+      <p>Implementing AI solutions, automated decision support, and intelligent workflows.</p>
     </div>
 
-    <div class="c-card-box fade-item">
-      <div class="c-card-header">
-        <span class="c-card-tag">Course</span>
-        <span class="c-card-score">100</span>
+    <div class="edu-card fade-in-on-scroll">
+      <div class="edu-header">
+        <span class="edu-badge">Course</span>
+        <span class="edu-grade">100</span>
       </div>
-      <div class="c-card-title">Business Computing Applications</div>
-      <p class="c-card-desc">Enterprise software tools, workflow automation, and organizational systems.</p>
+      <h3>Business Computing Applications</h3>
+      <p>Enterprise software tools, workflow automation, and organizational systems.</p>
     </div>
 
-    <div class="c-card-box fade-item">
-      <div class="c-card-header">
-        <span class="c-card-tag">Course</span>
-        <span class="c-card-score">96</span>
+    <div class="edu-card fade-in-on-scroll">
+      <div class="edu-header">
+        <span class="edu-badge">Course</span>
+        <span class="edu-grade">96</span>
       </div>
-      <div class="c-card-title">Machine Learning with Python &amp; AI</div>
-      <p class="c-card-desc">Supervised and unsupervised models, predictive analytics, and model evaluation.</p>
+      <h3>Machine Learning with Python &amp; AI</h3>
+      <p>Supervised and unsupervised models, predictive analytics, and model evaluation.</p>
     </div>
 
-    <div class="c-card-box fade-item">
-      <div class="c-card-header">
-        <span class="c-card-tag">Course</span>
-        <span class="c-card-score">96</span>
+    <div class="edu-card fade-in-on-scroll">
+      <div class="edu-header">
+        <span class="edu-badge">Course</span>
+        <span class="edu-grade">96</span>
       </div>
-      <div class="c-card-title">Statistics &amp; Data Analysis A</div>
-      <p class="c-card-desc">Probability theory, distributions, random variables, and statistical inference.</p>
+      <h3>Statistics &amp; Data Analysis A</h3>
+      <p>Probability theory, distributions, random variables, and statistical inference.</p>
     </div>
 
-    <div class="c-card-box fade-item">
-      <div class="c-card-header">
-        <span class="c-card-tag">Course</span>
-        <span class="c-card-score">95</span>
+    <div class="edu-card fade-in-on-scroll">
+      <div class="edu-header">
+        <span class="edu-badge">Course</span>
+        <span class="edu-grade">95</span>
       </div>
-      <div class="c-card-title">Advanced Econometrics with R</div>
-      <p class="c-card-desc">Multivariate regressions, time series models, diagnostic testing, and forecasting.</p>
+      <h3>Advanced Econometrics with R</h3>
+      <p>Multivariate regressions, time series models, diagnostic testing, and forecasting.</p>
     </div>
   </div>
 
   <!-- Degrees / Training Cards -->
   <div class="cards">
-    <article class="card fade-item">
+    <article class="card fade-in-on-scroll">
       <h3>B.A. Management – Data Science &amp; AI</h3>
       <p class="meta">Western Galilee College · 3rd year (in progress)</p>
       <p class="score"><b>96.5</b> weighted GPA <span>·</span> <b>98</b> specialization average</p>
@@ -350,7 +156,7 @@
         <li>Computational Models in Economics (R)</li>
       </ul>
     </article>
-    <article class="card fade-item">
+    <article class="card fade-in-on-scroll">
       <h3>Infrastructure, Networking &amp; Cloud Management</h3>
       <p class="meta">HackerU College · 2021 – 2022 · Graduated with honors (570 Academic Hours)</p>
       <p>Practical training in system administration, communication networks and Microsoft Azure. This is the base for my work in cloud and infrastructure today.</p>
@@ -366,9 +172,9 @@
 </section>
 
 <section id="experience">
-  <h2 class="title fade-item">My Experience</h2>
+  <h2 class="title fade-in-on-scroll">My Experience</h2>
   <div class="timeline">
-    <article class="item fade-item">
+    <article class="item fade-in-on-scroll">
       <h3>DevOps &amp; Cloud Engineer – Israel Electric Corporation</h3>
       <span class="date">2025 – PRESENT</span>
       <ul>
@@ -380,7 +186,7 @@
       <ul class="chips small"><li>DevOps</li><li>Terraform (IaC)</li><li>CI/CD</li><li>AWS Landing Zone</li><li>Azure</li><li>Python</li></ul>
     </article>
 
-    <article class="item fade-item">
+    <article class="item fade-in-on-scroll">
       <h3>System &amp; Cloud Administrator – Israel Electric Corporation</h3>
       <span class="date">SEP 2023 – 2025</span>
       <ul>
@@ -392,7 +198,7 @@
       <ul class="chips small"><li>System Administration</li><li>Hybrid Cloud</li><li>Delivery Team</li><li>Azure</li><li>On-Prem</li><li>PowerShell</li></ul>
     </article>
 
-    <article class="item fade-item">
+    <article class="item fade-in-on-scroll">
       <h3>IT &amp; System Administrator – Gav Systems</h3>
       <span class="date">PREVIOUS ROLE</span>
       <ul>
@@ -403,7 +209,7 @@
       <ul class="chips small"><li>System Administration</li><li>Networking</li><li>Troubleshooting</li></ul>
     </article>
 
-    <article class="item fade-item">
+    <article class="item fade-in-on-scroll">
       <h3>Customer Service Representative – ASUS</h3>
       <span class="date">EARLY CAREER</span>
       <ul>
@@ -416,9 +222,9 @@
 </section>
 
 <section id="projects">
-  <h2 class="title fade-item">Projects</h2>
+  <h2 class="title fade-in-on-scroll">Projects</h2>
   <div class="cards">
-    <article class="card project fade-item">
+    <article class="card project fade-in-on-scroll">
       <h3>SmartQ – AI-Powered ITSM Demo</h3>
       <p class="tag">AI Project</p>
       <p>A demo IT service management system with a chat interface. The user describes the problem in natural language, and SmartQ opens the ticket and routes it to the right handling team.</p>
@@ -433,60 +239,59 @@
   </div>
 </section>
 
-<!-- Centered Contact Me section matching Lihi's layout -->
-<section id="contact">
-  <h2 class="title fade-item">Contact Me</h2>
-  <p class="lead fade-item">Feel free to reach out — I'm always happy to connect!</p>
+<!-- Centered Contact Section -->
+<section id="contact" class="contact-section">
+  <h2 class="contact-title fade-in-on-scroll">Contact Me</h2>
+  <p class="contact-subtitle fade-in-on-scroll">Feel free to reach out — I'm always happy to connect!</p>
   
-  <div class="contact-box-wrapper fade-item">
-    <form id="contact-form" novalidate>
-      <div class="contact-field-group">
-        <label for="name">Name</label>
-        <input id="name" name="name" placeholder="Your name" aria-label="Name" required maxlength="100">
-      </div>
-      <div class="contact-field-group">
-        <label for="email">Email</label>
-        <input id="email" name="email" type="email" placeholder="Your email" aria-label="Email" required maxlength="150">
-      </div>
-      <div class="contact-field-group">
-        <label for="message">Message</label>
-        <textarea id="message" name="message" rows="5" placeholder="Write your message here..." aria-label="Message" required maxlength="3000"></textarea>
-      </div>
-      <input name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="display: none;">
-      <button class="contact-btn-center" type="submit">Send Message</button>
-      <p id="status" role="status" style="margin-top: 10px;"></p>
-    </form>
-  </div>
+  <form id="contact-form" class="contact-form fade-in-on-scroll" novalidate>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input id="name" name="name" placeholder="Name" required maxlength="100">
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" placeholder="Email" required maxlength="150">
+    </div>
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" placeholder="Message" required maxlength="3000"></textarea>
+    </div>
+    <input name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
+    <button class="btn primary contact-btn" type="submit">Send Message</button>
+    <p id="status" class="form-status" role="status"></p>
+  </form>
 </section>
 </main>
 
 <footer>Created by Daniel Oren</footer>
 <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 
-<!-- Scripts: Typewriter & Scroll Reveal -->
+<!-- Scripts: Precise Typewriter & Staggered Scroll Engine -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Typewriter Effect
-  const textToType = "Daniel Oren.";
-  const typewriterTarget = document.getElementById('typewriter');
-  const cursor = document.getElementById('typewriter-cursor');
-  let charIdx = 0;
+  // 1. Precise Typewriter Effect
+  const text = "Daniel Oren.";
+  const el = document.getElementById('typewriter');
+  const caret = document.getElementById('typewriter-caret');
+  let i = 0;
 
-  function typeChar() {
-    if (charIdx < textToType.length) {
-      typewriterTarget.textContent += textToType.charAt(charIdx);
-      charIdx++;
-      setTimeout(typeChar, 85 + Math.random() * 40);
+  function type() {
+    if (i < text.length) {
+      el.textContent += text.charAt(i);
+      i++;
+      setTimeout(type, 90 + Math.random() * 40);
     } else {
       setTimeout(() => {
-        if (cursor) cursor.style.display = 'none';
-      }, 1800);
+        if (caret) caret.style.display = 'none';
+      }, 2000);
     }
   }
-  setTimeout(typeChar, 400);
+  setTimeout(type, 500);
 
-  // 2. Staggered Fade-in on Scroll
-  const fadeItems = document.querySelectorAll('.fade-item');
+  // 2. High-performance Scroll Observer (Lihi's exact setup)
+  const targets = document.querySelectorAll('.fade-in-on-scroll, .fade-in-left, .fade-in-right');
+  
   const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -495,14 +300,12 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+    threshold: 0.15,
+    rootMargin: '0px 0px -40px 0px'
   });
 
-  fadeItems.forEach((el, index) => {
-    const delay = (index % 4) * 0.1;
-    el.style.transitionDelay = `${delay}s`;
-    observer.observe(el);
+  targets.forEach((target, index) => {
+    observer.observe(target);
   });
 });
 </script>
