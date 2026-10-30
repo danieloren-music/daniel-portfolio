@@ -10,61 +10,50 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-<style>
-  /* סגנונות גריד לקוביות הקורסים (Course Cards) בהתאמה לתמונה */
-  .courses-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 16px;
-    margin-top: 20px;
-  }
-  .course-box {
-    background: rgba(18, 20, 32, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 14px;
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(8px);
-    transition: transform 0.2s ease, border-color 0.2s ease;
-  }
-  .course-box:hover {
-    transform: translateY(-3px);
-    border-color: rgba(139, 92, 246, 0.4);
-  }
-  .course-box-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
-  }
-  .course-tag {
-    font-size: 0.65rem;
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 3px 8px;
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    color: #a1a1aa;
-  }
-  .course-score {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: #f4f4f5;
-  }
-  .course-title {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: #ffffff;
-    margin: 0 0 6px 0;
-    line-height: 1.3;
-  }
-  .course-desc {
-    font-size: 0.75rem;
-    color: #94a3b8;
-    line-
+</head>
+<body>
+<canvas id="particles" aria-hidden="true"></canvas>
+
+<header class="nav">
+  <a class="logo" href="#home">Daniel Oren</a>
+  <nav id="menu">
+    <a href="#home">Home</a><a href="#about">About</a><a href="#experience">Experience</a>
+    <a href="#projects">Projects</a><a href="#contact">Contact Me</a>
+  </nav>
+  <div class="tools">
+    <a href="https://www.linkedin.com/in/daniel-oren-002271195/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 11v6M8 7.5v.01M12 17v-6m0 3c0-2 1.5-3 3-3s2 1 2 3v3"/></svg></a>
+    <a href="https://github.com/YOUR-GITHUB-USERNAME" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12 12 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a>
+    <a href="mailto:danieloren1234@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+    <a href="tel:+972500000000" aria-label="Phone"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></a>
+    <button id="theme" aria-label="Switch light / dark mode" title="Switch light / dark mode"></button>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<main>
+<section id="home" class="hero">
+  <div class="hero-text">
+    <h1>Hi, I'm Daniel Oren.</h1>
+    <h2>DevOps · System &amp; Cloud Engineer</h2>
+    <p>I'm a DevOps, System and Cloud Administrator at <em class="hl">Israel Electric Corporation</em> with about 4 years of hands-on experience, and a third-year Management student specializing in Data Science and AI (GPA 96.5).</p>
+    <p>I specialize in <em class="hl">Azure and AWS</em>, leading complex cloud, integration and hybrid-environment projects. I also bring <em class="hl">AI and machine learning</em> into the organization to automate work, improve reliability and cut manual effort.</p>
+    <p>Before that, I worked as an IT &amp; System Administrator, and in customer support at ASUS, which is where I learned to listen first and fix second.</p>
+    <div class="btns">
+      <a class="btn primary" href="#projects">View projects</a>
+      <a class="btn primary" href="{{ url_for('static', filename='Daniel_Oren_CV.pdf') }}" download>My Resume ↓</a>
+      <a class="btn primary" href="#contact">Contact Me</a>
+    </div>
+  </div>
+  <div class="photo"><img src="{{ url_for('static', filename='images/daniel.jpg') }}" alt="Daniel Oren"></div>
+</section>
+
+<section id="about">
+  <h2 class="title">Skills</h2>
+  <p class="lead">Cloudy problems, clear skies. I keep debugging until everything is green.</p>
+  <ul class="clouds">
+    <li class="c1"><span>Microsoft Azure</span></li><li class="c1"><span>AWS</span></li><li class="c1"><span>Hybrid Cloud</span></li>
+    <li class="c1"><span>Cloud Integration</span></li><li class="c1"><span>Infrastructure Management</span></li><li class="c1"><span>System Administration</span></li><li class="c1"><span>Networking</span></li>
+    <li class="c2"><span>Python</span></li><li class="c2"><span>PowerShell</span></li><li class="c2"><span>Java</span></li>
+    <li class="c2"><span>R &amp; SQL</span></li><li class="c2"><span>Data Science</span></li><li class="c2"><span>Machine Learning</span></li><li class="c2"><span>AI Integration</span></li>
+    <li class="c3"><span>Problem Solving</span></li><li class="c3"><span>Analytical Thinking</span></li><li class="c3"><span>Project Leadership</span></li>
+    <li class="c3"><span>Teamwork</span></li><li class="c3"><span>Rapid Learning</span></li><li class="c3"><span>Multi-tasking</span></li><li class="c3"><span>Work
