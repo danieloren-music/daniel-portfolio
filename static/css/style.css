@@ -2,20 +2,20 @@
    GLOBAL & THEME VARIABLES
 ========================================= */
 :root {
-  --pink: #f32e90;
-  --pink-light: #f9a8d4;
-  --purple: #a855f7;
+  --accent: #2b84e0;
+  --accent-light: #a5d4ff;
+  --purple: #7b8ff5;
   --text: #e5e7eb;
   --muted: #9aa7c2;
-  --dark: #070b16;
-  --card: rgba(15, 22, 41, 0.85);
+  --dark: #0c1524;
+  --card: rgba(18, 30, 50, 0.85);
   --line: #1e2a47;
   --a: #38bdf8;
-  --b: #8b5cf6;
-  --glow: rgba(139, 92, 246, 0.4);
-  --navbg: rgba(7, 11, 22, 0.85);
+  --b: #7b8ff5;
+  --glow: rgba(59, 150, 240, 0.4);
+  --navbg: rgba(12, 21, 36, 0.85);
   --k1: #38bdf8;
-  --k2: #a78bfa;
+  --k2: #a5b4fc;
   --k3: #94a3b8;
 }
 
@@ -45,7 +45,7 @@ body {
   height: 100vh;
   z-index: -1;
   pointer-events: none;
-  background: radial-gradient(circle at 15% 15%, #2a113a 0%, #070b16 55%);
+  background: radial-gradient(circle at 15% 15%, #1f4268 0%, #0c1524 55%);
 }
 
 h1, h2, h3, .logo {
@@ -63,7 +63,7 @@ button, input, textarea {
 }
 
 :focus-visible {
-  outline: 2px solid var(--pink);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
 
@@ -93,7 +93,7 @@ button, input, textarea {
 }
 
 .logo:hover {
-  color: var(--pink);
+  color: var(--accent);
   letter-spacing: 0.09em;
 }
 
@@ -112,7 +112,7 @@ button, input, textarea {
 
 .nav nav a:hover {
   color: #fff;
-  border-bottom-color: var(--pink);
+  border-bottom-color: var(--accent);
 }
 
 .tools {
@@ -129,7 +129,7 @@ button, input, textarea {
 }
 
 .tools a:hover {
-  color: var(--pink);
+  color: var(--accent);
   transform: translateY(-2px);
 }
 
@@ -185,7 +185,7 @@ h1 {
 
 .hero h2 {
   font-size: clamp(1.1rem, 2.2vw, 1.4rem);
-  color: var(--pink-light);
+  color: var(--accent-light);
   font-weight: 600;
   margin: 0 0 20px;
   letter-spacing: 0.02em;
@@ -201,7 +201,7 @@ h1 {
 .hl {
   font-style: normal;
   font-weight: 600;
-  color: var(--pink);
+  color: var(--accent);
 }
 
 .btns {
@@ -226,10 +226,10 @@ h1 {
 }
 
 .btn.primary {
-  background: linear-gradient(135deg, var(--pink), var(--purple));
+  background: linear-gradient(135deg, var(--accent), var(--purple));
   color: #fff;
   border: none;
-  box-shadow: 0 8px 25px rgba(243, 46, 144, 0.35);
+  box-shadow: 0 8px 25px rgba(43, 132, 224, 0.35);
 }
 
 .btn:hover {
@@ -237,7 +237,7 @@ h1 {
 }
 
 .btn.primary:hover {
-  box-shadow: 0 12px 32px rgba(243, 46, 144, 0.55);
+  box-shadow: 0 12px 32px rgba(43, 132, 224, 0.55);
 }
 
 .photo {
@@ -245,9 +245,9 @@ h1 {
   width: clamp(240px, 28vw, 320px);
   aspect-ratio: 1/1.1;
   padding: 4px;
-  background: linear-gradient(135deg, var(--pink) 0%, var(--purple) 50%, var(--a) 100%);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--purple) 50%, var(--a) 100%);
   border-radius: 58% 42% 55% 45% / 50% 55% 45% 50%;
-  box-shadow: 0 0 50px rgba(243, 46, 144, 0.3);
+  box-shadow: 0 0 50px rgba(43, 132, 224, 0.3);
   animation: morph 12s ease-in-out infinite alternate;
 }
 
@@ -280,7 +280,7 @@ h1 {
   height: 4px;
   border-radius: 4px;
   margin-top: 10px;
-  background: linear-gradient(90deg, var(--pink), var(--purple));
+  background: linear-gradient(90deg, var(--accent), var(--purple));
 }
 
 .lead {
@@ -384,7 +384,7 @@ h1 {
   padding: 1.5rem 1.6rem;
   border-radius: 1.3rem;
   background: var(--card);
-  border: 1px solid rgba(244, 114, 182, 0.35);
+  border: 1px solid rgba(125, 190, 250, 0.35);
   box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
   display: flex;
   flex-direction: column;
@@ -395,8 +395,8 @@ h1 {
 
 .edu-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(243, 46, 144, 0.7);
-  box-shadow: 0 18px 45px rgba(243, 46, 144, 0.25);
+  border-color: rgba(43, 132, 224, 0.7);
+  box-shadow: 0 18px 45px rgba(43, 132, 224, 0.25);
 }
 
 .edu-header {
@@ -413,16 +413,16 @@ h1 {
   letter-spacing: 0.1em;
   padding: 0.2rem 0.65rem;
   border-radius: 999px;
-  border: 1px solid rgba(248, 113, 208, 0.6);
-  color: var(--pink-light);
-  background: rgba(248, 113, 208, 0.06);
+  border: 1px solid rgba(125, 190, 250, 0.6);
+  color: var(--accent-light);
+  background: rgba(125, 190, 250, 0.06);
 }
 
 .edu-grade {
   font-family: "JetBrains Mono", monospace;
   font-size: 1.15rem;
   font-weight: 700;
-  color: #fef3c7;
+  color: #e0f2fe;
 }
 
 .edu-card h3 {
@@ -459,7 +459,7 @@ h1 {
 }
 
 .card:hover {
-  border-color: var(--pink);
+  border-color: var(--accent);
   transform: translateY(-4px);
   box-shadow: 0 14px 35px rgba(0, 0, 0, 0.4);
 }
@@ -495,7 +495,7 @@ h1 {
 
 .score b {
   font: 800 1.8rem "Sora", sans-serif;
-  color: var(--pink);
+  color: var(--accent);
 }
 
 .score span {
@@ -504,7 +504,7 @@ h1 {
 
 .tag {
   display: inline-block;
-  color: var(--pink-light) !important;
+  color: var(--accent-light) !important;
   font-weight: 600;
   font-size: 0.82rem;
 }
@@ -547,8 +547,8 @@ h1 {
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  background: var(--pink);
-  box-shadow: 0 0 0 4px var(--dark), 0 0 14px var(--pink);
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--dark), 0 0 14px var(--accent);
 }
 
 .item h3 {
@@ -558,7 +558,7 @@ h1 {
 }
 
 .date {
-  color: var(--pink-light);
+  color: var(--accent-light);
   font-weight: 600;
   font-size: 0.85rem;
   letter-spacing: 0.04em;
@@ -597,8 +597,8 @@ h1 {
   background: var(--card);
   padding: 2.4rem 2.2rem;
   border-radius: 1.4rem;
-  border: 1px solid rgba(244, 114, 182, 0.4);
-  box-shadow: 0 20px 45px rgba(244, 114, 182, 0.15);
+  border: 1px solid rgba(125, 190, 250, 0.4);
+  box-shadow: 0 20px 45px rgba(125, 190, 250, 0.15);
   backdrop-filter: blur(8px);
 }
 
@@ -631,8 +631,8 @@ h1 {
 
 .form-group input:focus,
 .form-group textarea:focus {
-  border-color: var(--pink);
-  box-shadow: 0 0 12px rgba(243, 46, 144, 0.5);
+  border-color: var(--accent);
+  box-shadow: 0 0 12px rgba(43, 132, 224, 0.5);
 }
 
 .form-group textarea {
@@ -643,16 +643,16 @@ h1 {
 .contact-btn {
   width: 100%;
   margin-top: 0.8rem;
-  background: var(--pink) !important;
+  background: var(--accent) !important;
   color: var(--dark) !important;
-  border: 1px solid rgba(248, 113, 208, 0.8) !important;
-  box-shadow: 0 12px 30px rgba(243, 46, 144, 0.35) !important;
+  border: 1px solid rgba(125, 190, 250, 0.8) !important;
+  box-shadow: 0 12px 30px rgba(43, 132, 224, 0.35) !important;
   font-weight: 700;
 }
 
 .contact-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 16px 36px rgba(243, 46, 144, 0.5) !important;
+  box-shadow: 0 16px 36px rgba(43, 132, 224, 0.5) !important;
 }
 
 .form-status {
@@ -709,7 +709,7 @@ h1 {
   height: 1em;
   margin-left: 3px;
   vertical-align: -0.05em;
-  background: var(--pink);
+  background: var(--accent);
   animation: caret-blink 0.8s steps(1) infinite;
 }
 

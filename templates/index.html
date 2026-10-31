@@ -178,9 +178,9 @@
       <h3>DevOps &amp; Cloud Engineer – Israel Electric Corporation</h3>
       <span class="date">2025 – PRESENT</span>
       <ul>
-        <li>Architect and deploy mission-critical infrastructure across AWS Landing Zone (LZ) and Azure environments utilizing Terraform and Infrastructure as Code (IaC).</li>
+        <li>Lead and deploy mission-critical infrastructure as code (IaC) across hybrid and cloud environments, including AWS Landing Zone (LZ) and Azure, using Terraform.</li>
         <li>Build, optimize, and maintain automated CI/CD pipelines to streamline deployment lifecycles and increase operational delivery velocity.</li>
-        <li>Lead end-to-end delivery of complex hybrid-cloud architectures, bridging multi-cloud environments (AWS &amp; Azure) with legacy core systems.</li>
+        <li>Lead end-to-end delivery of complex enterprise projects across hybrid and multi-cloud environments (AWS &amp; Azure), bridging them with legacy core systems.</li>
         <li>Drive automation initiatives using Python and PowerShell to enforce cloud governance, consistency, and automated configuration management.</li>
       </ul>
       <ul class="chips small"><li>DevOps</li><li>Terraform (IaC)</li><li>CI/CD</li><li>AWS Landing Zone</li><li>Azure</li><li>Python</li></ul>
@@ -307,7 +307,7 @@ document.addEventListener('DOMContentLoaded', () => {
         this.vx = (Math.random() - 0.5) * 0.75;
         this.vy = (Math.random() - 0.5) * 0.75;
         this.radius = Math.random() * 2 + 1;
-        this.color = Math.random() > 0.45 ? 'rgba(243, 46, 144, ' : 'rgba(168, 85, 247, ';
+        this.color = Math.random() > 0.45 ? 'rgba(70, 160, 240, ' : 'rgba(129, 140, 248, ';
       }
       update() {
         this.x += this.vx;
@@ -345,7 +345,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(168, 85, 247, ${alpha})`;
+            ctx.strokeStyle = `rgba(129, 140, 248, ${alpha})`;
             ctx.lineWidth = 0.9;
             ctx.stroke();
           }
@@ -361,7 +361,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(mouse.x, mouse.y);
-            ctx.strokeStyle = `rgba(243, 46, 144, ${mAlpha})`;
+            ctx.strokeStyle = `rgba(90, 170, 245, ${mAlpha})`;
             ctx.lineWidth = 1.1;
             ctx.stroke();
           }
