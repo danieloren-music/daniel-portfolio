@@ -15,18 +15,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-<style>
-  /* ווידוא שהקנבס יושב ברקע מלא מאחורי כל האלמנטים */
-  #particles {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-    pointer-events: none;
-  }
-</style>
 </head>
 <body>
 <canvas id="particles"></canvas>
@@ -279,49 +267,72 @@
 <footer>Created by Daniel Oren</footer>
 <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 
-<!-- Scripts: Particles (Neurons), Typewriter & Scroll Engine -->
+<!-- Scripts: Neural Particles, Typewriter & Observer -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. אפקט הנוירונים והחוטים (Particles Canvas)
+  // ==========================================
+  // מנוע הנוירונים והקווים המלא והאינטראקטיבי
+  // ==========================================
   const canvas = document.getElementById('particles');
   if (canvas) {
     const ctx = canvas.getContext('2d');
-    let width = (canvas.width = window.innerWidth);
-    let height = (canvas.height = window.innerHeight);
+    let w, h;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-    let particles = [];
-    const count = Math.min(Math.floor((width * height) / 12000), 85);
-    const maxDist = 130;
+    function resize() {
+      w = canvas.width = window.innerWidth * dpr;
+      h = canvas.height = window.innerHeight * dpr;
+      ctx.scale(dpr, dpr);
+    }
+    resize();
+    window.addEventListener('resize', resize);
 
-    class Particle {
+    const mouse = { x: null, y: null, maxDist: 160 };
+    window.addEventListener('mousemove', (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    });
+    window.addEventListener('mouseleave', () => {
+      mouse.x = null;
+      mouse.y = null;
+    });
+
+    const count = Math.min(Math.floor((window.innerWidth * window.innerHeight) / 10000), 100);
+    const particles = [];
+
+    class Neuron {
       constructor() {
-        this.x = Math.random() * width;
-        this.y = Math.random() * height;
-        this.vx = (Math.random() - 0.5) * 0.7;
-        this.vy = (Math.random() - 0.5) * 0.7;
-        this.radius = Math.random() * 1.8 + 1;
-        this.color = Math.random() > 0.4 ? 'rgba(243, 46, 144, ' : 'rgba(168, 85, 247, ';
+        this.x = Math.random() * window.innerWidth;
+        this.y = Math.random() * window.innerHeight;
+        this.vx = (Math.random() - 0.5) * 0.75;
+        this.vy = (Math.random() - 0.5) * 0.75;
+        this.radius = Math.random() * 2 + 1;
+        this.color = Math.random() > 0.45 ? 'rgba(243, 46, 144, ' : 'rgba(168, 85, 247, ';
       }
       update() {
         this.x += this.vx;
         this.y += this.vy;
-        if (this.x < 0 || this.x > width) this.vx *= -1;
-        if (this.y < 0 || this.y > height) this.vy *= -1;
+
+        if (this.x < 0 || this.x > window.innerWidth) this.vx *= -1;
+        if (this.y < 0 || this.y > window.innerHeight) this.vy *= -1;
       }
       draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = this.color + '0.7)';
+        ctx.fillStyle = this.color + '0.85)';
+        ctx.shadowBlur = 8;
+        ctx.shadowColor = this.color + '0.9)';
         ctx.fill();
+        ctx.shadowBlur = 0;
       }
     }
 
     for (let i = 0; i < count; i++) {
-      particles.push(new Particle());
+      particles.push(new Neuron());
     }
 
     function animate() {
-      ctx.clearRect(0, 0, width, height);
+      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
@@ -329,13 +340,29 @@ document.addEventListener('DOMContentLoaded', () => {
           const dy = particles[i].y - particles[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
-          if (dist < maxDist) {
+          if (dist < 130) {
+            const alpha = (1 - dist / 130) * 0.35;
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            const alpha = 1 - dist / maxDist;
-            ctx.strokeStyle = `rgba(168, 85, 247, ${alpha * 0.22})`;
-            ctx.lineWidth = 0.8;
+            ctx.strokeStyle = `rgba(168, 85, 247, ${alpha})`;
+            ctx.lineWidth = 0.9;
+            ctx.stroke();
+          }
+        }
+
+        if (mouse.x !== null) {
+          const mdx = particles[i].x - mouse.x;
+          const mdy = particles[i].y - mouse.y;
+          const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+
+          if (mdist < mouse.maxDist) {
+            const mAlpha = (1 - mdist / mouse.maxDist) * 0.55;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(mouse.x, mouse.y);
+            ctx.strokeStyle = `rgba(243, 46, 144, ${mAlpha})`;
+            ctx.lineWidth = 1.1;
             ctx.stroke();
           }
         }
@@ -349,14 +376,9 @@ document.addEventListener('DOMContentLoaded', () => {
       requestAnimationFrame(animate);
     }
     animate();
-
-    window.addEventListener('resize', () => {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-    });
   }
 
-  // 2. Typewriter Effect
+  // Typewriter
   const text = "Daniel Oren.";
   const el = document.getElementById('typewriter');
   const caret = document.getElementById('typewriter-caret');
@@ -375,7 +397,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   setTimeout(type, 500);
 
-  // 3. Staggered Scroll Reveal
+  // Scroll Observer
   const targets = document.querySelectorAll('.fade-in-on-scroll, .fade-in-left, .fade-in-right');
   const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
