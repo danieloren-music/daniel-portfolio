@@ -8,7 +8,7 @@
   --text: #e5e7eb;
   --muted: #9aa7c2;
   --dark: #070b16;
-  --card: rgba(15, 22, 41, 0.9);
+  --card: rgba(15, 22, 41, 0.85);
   --line: #1e2a47;
   --a: #38bdf8;
   --b: #8b5cf6;
@@ -31,7 +31,7 @@ html {
 }
 
 body {
-  background: radial-gradient(circle at top left, #1a0f2e 0%, #070b16 45%);
+  background-color: transparent;
   color: var(--text);
   font-family: "Inter", system-ui, sans-serif;
   line-height: 1.65;
@@ -41,8 +41,11 @@ body {
 #particles {
   position: fixed;
   inset: 0;
+  width: 100vw;
+  height: 100vh;
   z-index: -1;
   pointer-events: none;
+  background: radial-gradient(circle at 15% 15%, #2a113a 0%, #070b16 55%);
 }
 
 h1, h2, h3, .logo {
@@ -358,7 +361,7 @@ h1 {
 }
 
 /* =========================================
-   COURSES GRID (LIHI'S EXACT STYLE)
+   COURSES GRID
 ========================================= */
 .computer-science-courses {
   display: block;
@@ -568,7 +571,7 @@ h1 {
 }
 
 /* =========================================
-   CONTACT SECTION (LIHI'S CENTERED STYLE)
+   CONTACT SECTION
 ========================================= */
 .contact-section {
   padding: 6rem 5vw 3rem;
@@ -659,7 +662,7 @@ h1 {
 }
 
 /* =========================================
-   SCROLL ANIMATIONS (LIHI'S ENGINE)
+   SCROLL ANIMATIONS
 ========================================= */
 .fade-in-on-scroll {
   opacity: 0;
